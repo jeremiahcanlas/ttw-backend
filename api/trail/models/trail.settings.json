@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "trails",
+  "info": {
+    "name": "trail"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}
