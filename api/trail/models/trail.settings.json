@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "trails",
   "info": {
-    "name": "trail"
+    "name": "trail",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -19,6 +20,11 @@
     },
     "description": {
       "type": "text"
+    },
+    "users_permissions_user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "trails"
     }
   }
 }
