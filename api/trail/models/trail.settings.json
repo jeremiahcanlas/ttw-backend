@@ -25,6 +25,16 @@
       "plugin": "users-permissions",
       "model": "user",
       "via": "trails"
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
     }
   }
 }
