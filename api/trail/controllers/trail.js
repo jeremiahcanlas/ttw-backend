@@ -9,6 +9,13 @@ const { parseMultipartData, sanitizeEntity } = require("strapi-utils");
 module.exports = {
   async create(ctx) {
     let entity;
+
+    const user = ctx.state.user;
+
+    if (!user) {
+      return ctx.unauthorized(`No authorization header found`);
+    }
+
     if (ctx.is("multipart")) {
       const { data, files } = parseMultipartData(ctx);
       data.user = ctx.state.user.id;
@@ -19,8 +26,53 @@ module.exports = {
     }
     return sanitizeEntity(entity, { model: strapi.models.trail });
   },
+  async update(ctx) {
+    let entity;
+    const { id } = ctx.params;
+    const user = ctx.state.user;
+
+    if (!user) {
+      return ctx.unauthorized(`No authorization header found`);
+    }
+
+    const [trail] = await strapi.services.trail.find({
+      id,
+      user: user,
+    });
+
+    if (!trail) {
+      return ctx.unauthorized(`You can't update this entry`);
+    }
+
+    if (ctx.is("multipart")) {
+      const { data, files } = parseMultipartData(ctx);
+      entity = await strapi.services.trail.update({ id }, data, {
+        files,
+      });
+    } else {
+      entity = await strapi.services.trail.update({ id }, ctx.request.body);
+    }
+
+    return sanitizeEntity(entity, { model: strapi.models.trail });
+  },
   async delete(ctx) {
     const { id } = ctx.params;
+    const user = ctx.state.user;
+
+    if (!user) {
+      return ctx.unauthorized(`No authorization header found`);
+    }
+
+    const [trail] = await strapi.services.trail.find({
+      id,
+      user: user,
+    });
+
+    //if trail isnt found, send unauthorized response
+    if (!trail) {
+      return ctx.unauthorized(`You can't delete this entry`);
+    }
+
     const entity = await strapi.services.trail.delete({ id });
 
     // with strapi multiple media
