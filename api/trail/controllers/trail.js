@@ -44,6 +44,8 @@ module.exports = {
       return ctx.unauthorized(`You can't update this entry`);
     }
 
+    console.log(trail);
+
     if (ctx.is("multipart")) {
       const { data, files } = parseMultipartData(ctx);
       entity = await strapi.services.trail.update({ id }, data, {
@@ -52,6 +54,8 @@ module.exports = {
     } else {
       entity = await strapi.services.trail.update({ id }, ctx.request.body);
     }
+
+    console.log(trail.images[0].id === entity.images[0].id);
 
     return sanitizeEntity(entity, { model: strapi.models.trail });
   },
