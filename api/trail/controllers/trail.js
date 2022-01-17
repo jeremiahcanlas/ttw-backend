@@ -31,6 +31,7 @@ module.exports = {
     const { id } = ctx.params;
     const user = ctx.state.user;
 
+    //if no user is found
     if (!user) {
       return ctx.unauthorized(`No authorization header found`);
     }
@@ -46,11 +47,31 @@ module.exports = {
 
     if (ctx.is("multipart")) {
       const { data, files } = parseMultipartData(ctx);
-      entity = await strapi.services.trail.update({ id }, data, {
-        files,
-      });
+      const { title, location, description, images } = data;
+      entity = await strapi.services.trail.update(
+        { id },
+        { title, location, description, images },
+        {
+          files,
+        }
+      );
     } else {
-      entity = await strapi.services.trail.update({ id }, ctx.request.body);
+      const { title, location, description, images } = ctx.request.body;
+      entity = await strapi.services.trail.update(
+        { id },
+        { title, location, description, images }
+      );
+    }
+
+    // if there is deleted file then this will delete it on the media library and cloudinary
+    if (ctx.request.body.deleted.length >= 1) {
+      let diff = await trail.images.filter((img) =>
+        ctx.request.body.deleted.includes(img.id)
+      );
+      diff.forEach((image) => {
+        !strapi.plugins.upload.services.upload.remove(image);
+      });
+      console.log(diff);
     }
 
     return sanitizeEntity(entity, { model: strapi.models.trail });
@@ -59,6 +80,7 @@ module.exports = {
     const { id } = ctx.params;
     const user = ctx.state.user;
 
+    //if no user is found
     if (!user) {
       return ctx.unauthorized(`No authorization header found`);
     }
