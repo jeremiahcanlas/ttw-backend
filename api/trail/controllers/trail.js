@@ -65,13 +65,10 @@ module.exports = {
 
     // if there is deleted file then this will delete it on the media library and cloudinary
     if (ctx.request.body.deleted.length >= 1) {
-      let diff = await trail.images.filter((img) =>
-        ctx.request.body.deleted.includes(img.id)
-      );
-      diff.forEach((image) => {
+      const deleted = ctx.request.body.deleted;
+      deleted.forEach((image) => {
         !strapi.plugins.upload.services.upload.remove(image);
       });
-      console.log(diff);
     }
 
     return sanitizeEntity(entity, { model: strapi.models.trail });
