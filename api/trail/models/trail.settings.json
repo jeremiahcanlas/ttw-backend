@@ -38,6 +38,18 @@
     },
     "geojson": {
       "type": "json"
+    },
+    "difficulty": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "distance": {
+      "type": "decimal"
+    },
+    "elevation": {
+      "type": "integer"
     }
   }
 }
