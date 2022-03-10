@@ -50,6 +50,16 @@
     },
     "elevation": {
       "type": "integer"
+    },
+    "rating": {
+      "type": "integer",
+      "max": 5,
+      "min": 1,
+      "required": false,
+      "default": 1
+    },
+    "trailLength": {
+      "type": "json"
     }
   }
 }
