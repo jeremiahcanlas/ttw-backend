@@ -58,8 +58,14 @@
       "required": false,
       "default": 1
     },
-    "trailLength": {
-      "type": "json"
+    "days": {
+      "type": "integer"
+    },
+    "hours": {
+      "type": "integer"
+    },
+    "minutes": {
+      "type": "integer"
     }
   }
 }
