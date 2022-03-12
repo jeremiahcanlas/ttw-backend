@@ -66,6 +66,9 @@
     },
     "minutes": {
       "type": "integer"
+    },
+    "trailLength": {
+      "type": "json"
     }
   }
 }
