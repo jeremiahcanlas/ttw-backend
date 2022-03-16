@@ -50,7 +50,18 @@ module.exports = {
       const { title, location, description, images } = data;
       entity = await strapi.services.trail.update(
         { id },
-        { title, location, description, images },
+        {
+          title,
+          location,
+          description,
+          difficulty,
+          type,
+          rating,
+          distance,
+          elevation,
+          trailLength,
+          images,
+        },
         {
           files,
         }
@@ -59,7 +70,18 @@ module.exports = {
       const { title, location, description, images } = ctx.request.body;
       entity = await strapi.services.trail.update(
         { id },
-        { title, location, description, images }
+        {
+          title,
+          location,
+          description,
+          difficulty,
+          type,
+          rating,
+          distance,
+          elevation,
+          trailLength,
+          images,
+        }
       );
     }
 
