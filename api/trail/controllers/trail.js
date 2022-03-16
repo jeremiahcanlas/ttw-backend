@@ -47,7 +47,18 @@ module.exports = {
 
     if (ctx.is("multipart")) {
       const { data, files } = parseMultipartData(ctx);
-      const { title, location, description, images } = data;
+      const {
+        title,
+        location,
+        description,
+        difficulty,
+        type,
+        rating,
+        distance,
+        elevation,
+        trailLength,
+        images,
+      } = data;
       entity = await strapi.services.trail.update(
         { id },
         {
@@ -67,7 +78,18 @@ module.exports = {
         }
       );
     } else {
-      const { title, location, description, images } = ctx.request.body;
+      const {
+        title,
+        location,
+        description,
+        difficulty,
+        type,
+        rating,
+        distance,
+        elevation,
+        trailLength,
+        images,
+      } = ctx.request.body;
       entity = await strapi.services.trail.update(
         { id },
         {
