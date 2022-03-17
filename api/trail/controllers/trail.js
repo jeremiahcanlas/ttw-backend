@@ -58,6 +58,7 @@ module.exports = {
         elevation,
         trailLength,
         images,
+        allTrailsUrl,
       } = data;
       entity = await strapi.services.trail.update(
         { id },
@@ -72,6 +73,7 @@ module.exports = {
           elevation,
           trailLength,
           images,
+          allTrailsUrl,
         },
         {
           files,
@@ -89,6 +91,7 @@ module.exports = {
         elevation,
         trailLength,
         images,
+        allTrailsUrl,
       } = ctx.request.body;
       entity = await strapi.services.trail.update(
         { id },
@@ -103,6 +106,7 @@ module.exports = {
           elevation,
           trailLength,
           images,
+          allTrailsUrl,
         }
       );
     }
