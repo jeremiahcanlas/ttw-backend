@@ -63,6 +63,9 @@
     },
     "allTrailsUrl": {
       "type": "string"
+    },
+    "city": {
+      "type": "string"
     }
   }
 }
