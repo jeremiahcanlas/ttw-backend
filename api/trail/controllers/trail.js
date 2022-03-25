@@ -18,6 +18,18 @@ module.exports = {
 
     //if user = guest && user.entries > 1 then deny create until entries are 0
 
+    if (user.role.type === "guest") {
+      const trails = await strapi.services.trail.find({
+        user: user,
+      });
+
+      if (trails.length === 1) {
+        return ctx.unauthorized(
+          `Reached maximum allowed entries for guest account. Please delete the existing entry to continue`
+        );
+      }
+    }
+
     if (ctx.is("multipart")) {
       const { data, files } = parseMultipartData(ctx);
       data.user = ctx.state.user.id;
@@ -33,13 +45,6 @@ module.exports = {
     const { id } = ctx.params;
     const user = ctx.state.user;
 
-    if (user.role.type === "guest") {
-      const trails = await strapi.services.trail.find({
-        user: user,
-      });
-
-      console.log(trails.length === 1);
-    }
     //if no user is found
     if (!user) {
       return ctx.unauthorized(`No authorization header found`);
