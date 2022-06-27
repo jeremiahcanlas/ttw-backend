@@ -13,7 +13,9 @@ module.exports = {
     const user = ctx.state.user;
 
     if (!user) {
-      return ctx.unauthorized(`No authorization header found`);
+      return ctx.unauthorized(
+        `No authorization header found, better luck next time`
+      );
     }
 
     //if user = guest && user.entries > 1 then deny create until entries are 0
