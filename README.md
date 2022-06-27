@@ -1,3 +1,5 @@
 # Strapi application
 
-backend for through the woods 
+backend for through the woods
+
+Uses strapi backend
