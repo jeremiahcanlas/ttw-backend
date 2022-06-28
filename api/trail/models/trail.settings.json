@@ -58,14 +58,14 @@
       "required": false,
       "default": 1
     },
-    "trailLength": {
-      "type": "json"
-    },
     "allTrailsUrl": {
       "type": "string"
     },
     "city": {
       "type": "string"
+    },
+    "duration": {
+      "type": "integer"
     }
   }
 }

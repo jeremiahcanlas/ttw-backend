@@ -72,7 +72,7 @@ module.exports = {
         rating,
         distance,
         elevation,
-        trailLength,
+        duration,
         images,
         allTrailsUrl,
       } = data;
@@ -87,7 +87,7 @@ module.exports = {
           rating,
           distance,
           elevation,
-          trailLength,
+          duration,
           images,
           allTrailsUrl,
         },
@@ -105,7 +105,7 @@ module.exports = {
         rating,
         distance,
         elevation,
-        trailLength,
+        duration,
         images,
         allTrailsUrl,
       } = ctx.request.body;
@@ -121,7 +121,7 @@ module.exports = {
           rating,
           distance,
           elevation,
-          trailLength,
+          duration,
           images,
           allTrailsUrl,
         }
