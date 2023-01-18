@@ -27,13 +27,11 @@
       "via": "trails"
     },
     "images": {
-      "collection": "file",
+      "collection": "File",
       "via": "related",
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "plugin": "upload",
-      "required": false,
+      "required": true,
       "pluginOptions": {}
     },
     "geojson": {
