@@ -26,14 +26,6 @@
       "model": "user",
       "via": "trails"
     },
-    "images": {
-      "collection": "File",
-      "via": "related",
-      "allowedTypes": ["images"],
-      "plugin": "upload",
-      "required": true,
-      "pluginOptions": {}
-    },
     "geojson": {
       "type": "json"
     },
