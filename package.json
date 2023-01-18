@@ -9,18 +9,17 @@
     "build": "strapi build",
     "strapi": "strapi"
   },
-  "devDependencies": {},
   "dependencies": {
-    "strapi": "3.6.8",
-    "strapi-admin": "3.6.8",
+    "strapi": "^3.6.11",
+    "strapi-admin": "^3.0.6",
     "strapi-connector-mongoose": "3.6.8",
     "strapi-plugin-content-manager": "3.6.8",
     "strapi-plugin-content-type-builder": "3.6.8",
     "strapi-plugin-email": "3.6.8",
     "strapi-plugin-i18n": "3.6.8",
-    "strapi-plugin-upload": "3.6.8",
+    "strapi-plugin-upload": "^0.0.0",
     "strapi-plugin-users-permissions": "3.6.8",
-    "strapi-provider-upload-cloudinary": "^3.6.8",
+    "strapi-provider-upload-cloudinary": "^3.1.4",
     "strapi-utils": "3.6.8"
   },
   "author": {
@@ -31,7 +30,7 @@
   },
   "engines": {
     "node": "16.x",
-    "npm": "7.x"
+    "npm": "8.x"
   },
   "license": "MIT"
 }
